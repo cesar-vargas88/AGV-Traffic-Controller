@@ -16,23 +16,21 @@ namespace AGV_Traffic_Controller
     /// </summary>
     public partial class ucMaps
     {
-        // Define enum for all 3 shapes
         private enum MyShape
         {
-            Line, Ellipse
+           Ellipse, Line
         }
-        // Define the current shape used
         private MyShape currShape;
         private Point start;
         private Point end;
 
         private struct Node
         {
-            string id;
-            string name;
-            int positionX;
-            int positionY;
-            int diameter;
+            public string id;
+            public string name;
+            public int positionX;
+            public int positionY;
+            public int diameter;
 
             public Node(string ID, string Name, int PositionX, int PositionY, int Diameter)
             {
@@ -54,14 +52,53 @@ namespace AGV_Traffic_Controller
                 weight = Weight;
             }
         }
-        private List<Node> list_Nodes;
+
+        private List<Node>       list_Nodes;
         private List<List<Edge>> AdjacencyLists;
 
         public ucMaps()
         {
             InitializeComponent();
+
             AdjacencyLists  = new List<List<Edge>> { };
             list_Nodes           = new List<Node> { };
+        }
+
+        private void DrawLine()
+        {
+           /* Line newLine = new Line()
+            {
+                Stroke = Brushes.Blue,
+                X1 = start.X,
+                Y1 = start.Y - 50,
+                X2 = end.X,
+                Y2 = end.Y - 50
+            };
+
+            MyCanvas.Children.Add(newLine);*/
+        }
+        private void DrawEllipse()
+        {
+            Ellipse elipse_Node = new Ellipse()
+            {
+                Fill = Brushes.DarkGoldenrod,
+                Height = 20,
+                Width = 20
+            };
+
+            elipse_Node.SetValue(Canvas.LeftProperty, start.X - 310);
+            elipse_Node.SetValue(Canvas.TopProperty, start.Y - 50 - 15);
+            MyCanvas.Children.Add(elipse_Node);
+
+            AddNodeWindow addNodeWindow = new AddNodeWindow();
+
+            if (addNodeWindow.ShowDialog() == false && addNodeWindow.add)
+            {
+                list_Nodes.Add(new Node(addNodeWindow.txtID.Text, addNodeWindow.txtName.Text, 0, 1, 20));
+                lboxNodes.Items.Add(addNodeWindow.txtName.Text + "\t ID: " + addNodeWindow.txtID.Text);
+            }
+            else
+                MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
         }
 
         private void LineButton_Click(object sender, RoutedEventArgs e)
@@ -72,6 +109,7 @@ namespace AGV_Traffic_Controller
         {
             currShape = MyShape.Ellipse;
         }
+
         private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             // Get the X & Y of where mouse is 1st clicked
@@ -102,40 +140,33 @@ namespace AGV_Traffic_Controller
                 end = e.GetPosition(this);
             }
         }
-        private void DrawLine()
-        {
-            Line newLine = new Line()
-            {
-                Stroke = Brushes.Blue,
-                X1 = start.X,
-                Y1 = start.Y - 50,
-                X2 = end.X,
-                Y2 = end.Y - 50
-            };
 
-            MyCanvas.Children.Add(newLine);
-        }
-        private void DrawEllipse()
+        private void lboxNodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Ellipse elipse_Node = new Ellipse()
-            {
-                Fill = Brushes.Blue,
-                Height = 20,
-                Width = 20
-            };
-
-            elipse_Node.SetValue(Canvas.LeftProperty, start.X - 10);
-            elipse_Node.SetValue(Canvas.TopProperty, start.Y - 50 - 10);
+            /*MyCanvas.Children.RemoveAt(lboxNodes.SelectedIndex);
+            //list_Nodes.Add(new Node(addNodeWindow.txtID.Text, addNodeWindow.txtName.Text, 0, 1, 20));
+            //lboxNodes.Items.Add(addNodeWindow.txtName.Text + "\t ID: " + addNodeWindow.txtID.Text);
+            elipse_Node.SetValue(Canvas.LeftProperty, start.X - 310);
+            elipse_Node.SetValue(Canvas.TopProperty, start.Y - 50 - 15);
             MyCanvas.Children.Add(elipse_Node);
 
-            AddNodeWindow addNodeWindow = new AddNodeWindow();
+            MyCanvas.Children[lboxNodes.SelectedIndex].Focus();*/
+        }
 
-            if (addNodeWindow.ShowDialog() == false && addNodeWindow.add)
+        private void btnDeleteNodes_Click(object sender, RoutedEventArgs e)
+        {
+            if (lboxNodes.SelectedIndex > -1)
             {
-                list_Nodes.Add(new Node(addNodeWindow.txtID.Text, addNodeWindow.txtName.Text, 0, 1, 20));
+                MyCanvas.Children.RemoveAt(lboxNodes.SelectedIndex);
+                lboxNodes.Items.RemoveAt(lboxNodes.SelectedIndex);
             }
             else
-                MyCanvas.Children.RemoveAt(MyCanvas.Children.Count-1);
+                MessageBox.Show("Seleccione el nodo que desea eliminar.", "Error");
+        }
+
+        private void btnSelectNodes_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }   

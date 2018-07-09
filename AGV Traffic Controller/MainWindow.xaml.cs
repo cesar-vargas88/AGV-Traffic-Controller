@@ -68,5 +68,7 @@ namespace AGV_Traffic_Controller
                 tabItemLogs.Foreground = Brushes.SteelBlue;
             }
         }
+
+
     }
 }

@@ -7,17 +7,29 @@
              mc:Ignorable="d">
     <Grid Background="{x:Null}">
         <Grid Margin="0, 0,0, 0" Width="300" Background="SteelBlue" HorizontalAlignment="Left">
-            <Label Content="Mapas" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <ListBox Margin="10,35"       BorderBrush="#FFE5E5E5" Width="280" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" FontSize="16" Foreground="White"/>
-            <Button x:Name="btnAdd"     Content="Agregar"       Foreground="White" Background="Gray" BorderBrush="Gray" Margin="3,240,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
-            <Button x:Name="btnDelete"  Content="Borrar"        Foreground="White" Background="Gray" BorderBrush="Gray" Margin="96,240,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
-            <Button x:Name="btnSelect"  Content="Seleccionar"   Foreground="White" Background="Gray" BorderBrush="Gray" Margin="206,240,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+
+            <Label x:Name="lblMaps" Content="Mapas" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxMaps" Margin="10,25"  Width="280" Height="100"  Background="White" Foreground="Gray" BorderBrush="#FFE5E5E5" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16"/>
+            <Button x:Name="btnCreateMaps"     Content="Create"       Foreground="White" Background="Gray" BorderBrush="Gray" Margin="3,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+            <Button x:Name="btnDeleteMaps"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="Gray" Margin="96,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+            <Button x:Name="btnShowMaps"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="Gray" Margin="206,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+
+            <Label x:Name="lblNodes" Content="Nodos" Margin="0,165,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxNodes" Margin="10,190"   Width="280" Height="200" Background="White" Foreground="Gray" BorderBrush="#FFE5E5E5" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" SelectionChanged="lboxNodes_SelectionChanged"/>
+            <Button x:Name="btnDeleteNodes"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="Gray" Margin="96,395,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteNodes_Click"/>
+            <Button x:Name="btnSelectNodes"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="Gray" Margin="206,395,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnSelectNodes_Click"/>
+
+            <Label x:Name="lblEdges" Content="Aristas" Margin="0,430,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxEdges" Margin="10,455,0,0"      Width="280" Height="200" Background="White" Foreground="Gray" BorderBrush="#FFE5E5E5" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16"/>
+            <Button x:Name="btnAddEdges"  Content="Agregar"        Foreground="White" Background="Gray" BorderBrush="Gray" Margin="3,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+            <Button x:Name="btnDeleteEdges"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="Gray" Margin="96,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+            <Button x:Name="btnSelectEdges"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="Gray" Margin="206,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
 
         </Grid>
         <Grid Margin="300, 0, 0, 0">
             <ToolBar Name="MyToolbar" Margin="0,0,0,0" Height="55" VerticalAlignment="Top" BorderBrush="#FF969696" Background="Gray">
-                <RadioButton Name="btnNode" BorderBrush="#FF969696" Content="Nodo" Height="55" Width="130" GroupName="ShapeGroup" Click="EllipseButton_Click" IsChecked="True" Foreground="White" FontFamily="Calibri" FontSize="20"/>
-                <RadioButton Name="btnEdge" BorderBrush="#FF969696" Content="Arista" Height="55" Width="130" GroupName="ShapeGroup" Click="LineButton_Click" Foreground="White" FontFamily="Calibri" FontSize="20" />
+                <RadioButton Name="btnNode" BorderBrush="#FF969696" Content="Agregar nodo" Height="55" Width="160" GroupName="ShapeGroup" Click="EllipseButton_Click" IsChecked="True" Foreground="White" FontFamily="Calibri" FontSize="20"/>
+                <RadioButton Name="btnEdge" BorderBrush="#FF969696" Content="Agregar arista" Height="55" Width="160" GroupName="ShapeGroup" Click="LineButton_Click" Foreground="White" FontFamily="Calibri" FontSize="20" />
             </ToolBar>
             <Canvas Name="MyCanvas" Margin="0,56,0,0" Background="White" MouseDown="MyCanvas_MouseDown" MouseUp="MyCanvas_MouseUp" MouseMove="MyCanvas_MouseMove"/>
         </Grid>
