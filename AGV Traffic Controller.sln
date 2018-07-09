@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGV Traffic Controller", "AGV Traffic Controller\AGV Traffic Controller.csproj", "{A093A061-95A8-4CEF-8743-F5C516EFE337}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A093A061-95A8-4CEF-8743-F5C516EFE337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A093A061-95A8-4CEF-8743-F5C516EFE337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A093A061-95A8-4CEF-8743-F5C516EFE337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A093A061-95A8-4CEF-8743-F5C516EFE337}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD737605-744A-4A95-8D21-7FCFF841870B}
+	EndGlobalSection
+EndGlobal
