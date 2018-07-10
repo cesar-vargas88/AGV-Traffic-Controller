@@ -1,0 +1,19 @@
+﻿<Window x:Class="AGV_Traffic_Controller.AddEdgeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AGV_Traffic_Controller"
+        mc:Ignorable="d"
+        Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
+    <Grid>
+        <ComboBox x:Name="cboxTipo"     HorizontalAlignment="Left" Margin="84,11,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
+        <ComboBox x:Name="cboxInicial"  HorizontalAlignment="Left" Margin="84,49,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
+        <ComboBox x:Name="cboxFinal"    HorizontalAlignment="Left" Margin="84,87,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
+        <Button x:Name="btnAdd" Content="Agregar" HorizontalAlignment="Left" Margin="189,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
+        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="100,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
+        <Label x:Name="lblInicial" Content="Final" HorizontalAlignment="Left" Margin="16,83,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblFinal" Content="Inicial" HorizontalAlignment="Left" Margin="16,46,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblTipo" Content="Dirigido" HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" FontSize="16"/>
+    </Grid>
+</Window>

@@ -15,29 +15,27 @@ using System.Windows.Shapes;
 namespace AGV_Traffic_Controller
 {
     /// <summary>
-    /// Interaction logic for AddNodeWindow.xaml
+    /// Interaction logic for AddEdgeWindow.xaml
     /// </summary>
-    public partial class AddNodeWindow : Window
+    public partial class AddEdgeWindow : Window
     {
         public bool add;
 
         private List<Node> list_Nodes;
+        private List<Edge> list_Edges;
 
-        public AddNodeWindow(List<Node> List_Nodes)
+        public AddEdgeWindow(List<Node> List_Nodes, List<Edge> List_Edges)
         {
             InitializeComponent();
 
-            list_Nodes  = List_Nodes;
             add         = false;
+            list_Nodes  = List_Nodes;
+            list_Edges  = List_Edges;
+
+            cboxTipo.Items.Add("Sí");
+            cboxTipo.Items.Add("No");
         }
 
-        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (txtName.Text != "")
-                btnAdd.IsEnabled = true;
-            else
-                btnAdd.IsEnabled = false;
-        }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             add = false;

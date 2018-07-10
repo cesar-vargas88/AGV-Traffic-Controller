@@ -48,3 +48,5 @@ C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controlle
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller - Copy\AGV Traffic Controller\obj\Debug\AddNodeWindow.baml
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\AddNodeWindow.g.cs
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\AddNodeWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\AddEdgeWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\AddEdgeWindow.baml
