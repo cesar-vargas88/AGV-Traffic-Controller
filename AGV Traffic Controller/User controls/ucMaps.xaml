@@ -30,7 +30,7 @@
         <Grid Margin="300, 0, 0, 0" Background="SteelBlue">
             <Button x:Name="btnAddNode"  Content="Agregar vértice"   Foreground="White" Background="Gray" BorderBrush="White" Margin="0,0,0,0" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontFamily="Calibri" Click="btnAddNodes_Click"/>
             <Button x:Name="btnAddEdge"  Content="Agregar arista"   Foreground="White" Background="Gray" BorderBrush="White" Margin="150,0,0,0" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontFamily="Calibri" Click="btnAddEdges_Click"/>
-            <Canvas Name="MyCanvas" Margin="0,50,0,0" Background="White" MouseDown="MyCanvas_MouseDown" MouseUp="MyCanvas_MouseUp" MouseMove="MyCanvas_MouseMove"/>
+            <Canvas Name="MyCanvas" Margin="0,50,0,0" Background="White" MouseDown="MyCanvas_MouseDown"/>
         </Grid>
     </Grid>
 </UserControl>

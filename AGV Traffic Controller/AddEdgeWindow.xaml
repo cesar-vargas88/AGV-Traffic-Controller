@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
     <Grid>
-        <ComboBox x:Name="cboxTipo"     HorizontalAlignment="Left" Margin="84,11,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
-        <ComboBox x:Name="cboxInicial"  HorizontalAlignment="Left" Margin="84,49,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
-        <ComboBox x:Name="cboxFinal"    HorizontalAlignment="Left" Margin="84,87,0,0" VerticalAlignment="Top" Width="171" Height="25"/>
-        <Button x:Name="btnAdd" Content="Agregar" HorizontalAlignment="Left" Margin="189,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="100,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
-        <Label x:Name="lblInicial" Content="Final" HorizontalAlignment="Left" Margin="16,83,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label x:Name="lblFinal" Content="Inicial" HorizontalAlignment="Left" Margin="16,46,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label x:Name="lblTipo" Content="Dirigido" HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="cboxDirected"     HorizontalAlignment="Left" Margin="90,11,0,0" VerticalAlignment="Top" Width="171" Height="25" SelectionChanged="cboxTipo_SelectionChanged"/>
+        <ComboBox x:Name="cboxPredecessor"  HorizontalAlignment="Left" Margin="90,43,0,0" VerticalAlignment="Top" Width="171" Height="25" SelectionChanged="cboxInicial_SelectionChanged"/>
+        <ComboBox x:Name="cboxSuccessor"    HorizontalAlignment="Left" Margin="90,75,0,0" VerticalAlignment="Top" Width="171" Height="25" SelectionChanged="cboxFinal_SelectionChanged"/>
+        <ComboBox x:Name="cboxWeight"       HorizontalAlignment="Left" Margin="90,107,0,0" VerticalAlignment="Top" Width="171" Height="25" SelectionChanged="cboxPeso_SelectionChanged"/>
+        <Button x:Name="btnAdd"             Content="Agregar" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
+        <Button x:Name="btnCancel"          Content="Cancelar" HorizontalAlignment="Left" Margin="104,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
+        <Label x:Name="lblPredecessor"      Content="Final" HorizontalAlignment="Left" Margin="22,71,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblSuccesso"         Content="Inicial" HorizontalAlignment="Left" Margin="22,40,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblDirected"         Content="Dirigido" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblWeight"           Content="Peso" HorizontalAlignment="Left" Margin="22,102,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>

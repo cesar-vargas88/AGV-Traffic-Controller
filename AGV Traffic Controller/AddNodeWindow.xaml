@@ -7,9 +7,9 @@
         mc:Ignorable="d" Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
 
     <Grid>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="25" Margin="84,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="16" TextChanged="txtName_TextChanged"/>
-        <Button x:Name="btnAdd" Content="Agregar" HorizontalAlignment="Left" Margin="189,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="100,134,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
-        <Label x:Name="lblName" Content="Nombre" HorizontalAlignment="Left" Margin="16,24,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="25" Margin="90,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="16" TextChanged="txtName_TextChanged"/>
+        <Button x:Name="btnAdd" Content="Agregar" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
+        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="104,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
+        <Label x:Name="lblName" Content="Nombre" HorizontalAlignment="Left" Margin="22,59,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>

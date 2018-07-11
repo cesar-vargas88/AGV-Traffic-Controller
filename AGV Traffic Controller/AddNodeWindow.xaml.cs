@@ -45,8 +45,22 @@ namespace AGV_Traffic_Controller
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            add = true;
-            this.Close();
+            int x;
+
+            for(x = 0; x < list_Nodes.Count; x++)
+            {
+                if(list_Nodes[x].name == txtName.Text)
+                {
+                    MessageBox.Show("Ya existe un vértice con ese nombre.", "Error");
+                    x = list_Nodes.Count + 1;
+                } 
+            }
+
+            if(x == 0 || x == list_Nodes.Count)
+            {
+                add = true;
+                this.Close();
+            } 
         }
     }
 }
