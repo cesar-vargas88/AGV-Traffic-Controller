@@ -36,7 +36,6 @@ namespace AGV_Traffic_Controller
     {
         public string name;
         public int weight;
-        public bool directed;
         public string name_node_predecessor;
         public int radian_node_predecessor;
         public string name_node_successor;
@@ -45,11 +44,10 @@ namespace AGV_Traffic_Controller
         public string color;
         public int width;
 
-        public Edge(string Name, int Weight, bool Directed, string Name_node_predecessor, int Radian_node_predecessor, string Name_node_successor, int Radian_node_successor, string Color, int Width)
+        public Edge(string Name, int Weight, string Name_node_predecessor, int Radian_node_predecessor, string Name_node_successor, int Radian_node_successor, string Color, int Width)
         {
             name = Name;
             weight = Weight;
-            directed = Directed;
             name_node_predecessor = Name_node_predecessor;
             radian_node_predecessor = Radian_node_predecessor;
             name_node_successor = Name_node_successor;
@@ -66,8 +64,8 @@ namespace AGV_Traffic_Controller
         private List<List<Edge>> AdjacencyLists;
 
         private bool AddNode;
-        private const int Node_Diameter  = 30;
-        private const int Edge_Thickness = 2;
+        private const int Node_Diameter  = 20;
+        private const int Edge_Thickness = 3;
         private const int CanvasMargin_X = 300;
         private const int CanvasMargin_Y = 50;
 
@@ -120,7 +118,7 @@ namespace AGV_Traffic_Controller
             btnAddNode.IsEnabled = true;
             btnAddNodes.IsEnabled = true;
         }
-        private void DrawEdge(Brush color, int width)
+        private void DrawEdge(Brush color, int thickness)
         {
             if(list_Nodes.Count > 0)
             {
@@ -134,7 +132,6 @@ namespace AGV_Traffic_Controller
                         (
                             addEdgeWindow.edge.name, 
                             addEdgeWindow.edge.weight,
-                            addEdgeWindow.edge.directed,
                             addEdgeWindow.edge.name_node_predecessor, 
                             1, 
                             addEdgeWindow.edge.name_node_successor, 
@@ -172,7 +169,9 @@ namespace AGV_Traffic_Controller
 
                     lboxEdges.Items.Add(addEdgeWindow.edge.name);
 
-                    Line newLine = new Line() { Stroke = color, X1 = Start.X, Y1 = Start.Y, X2 = End.X, Y2 = End.Y, StrokeThickness = width};
+                    Line newLine;
+                    
+                    newLine = new Line() { Stroke = color, X1 = Start.X, Y1 = Start.Y, X2 = End.X, Y2 = End.Y, StrokeThickness = thickness, StrokeStartLineCap = PenLineCap.Triangle, StrokeEndLineCap = PenLineCap.Triangle };
 
                     MyCanvas.Children.Add(newLine);
                 }
@@ -189,7 +188,7 @@ namespace AGV_Traffic_Controller
             start.Y = start.Y - CanvasMargin_Y - (Node_Diameter/2);
 
             if(AddNode)
-                DrawNode(Brushes.SteelBlue, Node_Diameter, start);
+                DrawNode(Brushes.Black, Node_Diameter, start);
         }
 
         private void btnCreateMaps_Click(object sender, RoutedEventArgs e)
@@ -240,12 +239,12 @@ namespace AGV_Traffic_Controller
         }
         private void btnSelectNodes_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btnAddEdges_Click(object sender, RoutedEventArgs e)
         {
-            DrawEdge(Brushes.Black, Edge_Thickness);
+            DrawEdge(Brushes.Red, Edge_Thickness);
         }
         private void btnDeleteEdges_Click(object sender, RoutedEventArgs e)
         {
