@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\
 AGV_Traffic_Controller
 none
 false
 DEBUG;TRACE
-C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\App.xaml
-4-486803525
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\App.xaml
+7-2079514431
 
-15-1517213862
-89-376025271
-AddEdgeWindow.xaml;AddNodeWindow.xaml;MainWindow.xaml;User controls\ucMaps.xaml;
+18-1018425384
+89201157079
+CreateMapWindow.xaml;AddEdgeWindow.xaml;AddNodeWindow.xaml;DeleteMapWindow.xaml;LoadMapWindow.xaml;MainWindow.xaml;User controls\ucMaps.xaml;
 
-False
+True
 

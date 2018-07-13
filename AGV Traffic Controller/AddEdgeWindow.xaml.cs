@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AGV_Traffic_Controller
 {
@@ -45,59 +35,66 @@ namespace AGV_Traffic_Controller
             cboxWeight.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// This method will close the window.
+        /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             add = false;
             this.Close();
         }
+        /// <summary>
+        /// This method verify that the Edge doesn't exist, if that is true fills the edge struct. 
+        /// </summary>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            int x;
+            int EdgeIndex;
 
-            for (x = 0; x < list_Edges.Count; x++)
+            for (EdgeIndex = 0; EdgeIndex < list_Edges.Count; EdgeIndex++)
             {
-                if (list_Edges[x].name.Contains((string)cboxPredecessor.SelectedItem + "<->" + (string)cboxSuccessor.SelectedItem) ||
-                    list_Edges[x].name.Contains((string)cboxSuccessor.SelectedItem   + "<->" + (string)cboxPredecessor.SelectedItem))
+                if (list_Edges[EdgeIndex].name.Contains((string)cboxPredecessor.SelectedItem + "<->" + (string)cboxSuccessor.SelectedItem) ||
+                    list_Edges[EdgeIndex].name.Contains((string)cboxSuccessor.SelectedItem   + "<->" + (string)cboxPredecessor.SelectedItem))
                 {
                     MessageBox.Show("Ya existe una arista entre los vértices " + (string)cboxPredecessor.SelectedItem + " y " + (string)cboxSuccessor.SelectedItem , "Error");
-                    x = list_Nodes.Count + 1;
+                    EdgeIndex = list_Nodes.Count + 1;
                 }
             }
 
-            if (x == 0 || x == list_Edges.Count)
+            if (EdgeIndex == 0 || EdgeIndex == list_Edges.Count)
             {
-                edge.name_node_predecessor  = (string)cboxPredecessor.SelectedItem;
-                edge.name_node_successor    = (string)cboxSuccessor.SelectedItem;
                 edge.weight = (int)cboxWeight.SelectedItem;
-                edge.name = edge.name_node_predecessor + "<->" + edge.name_node_successor + " : " + edge.weight.ToString();
-                
+                edge.node_predecessor.name  = (string) cboxPredecessor.SelectedItem;
+                edge.node_successor.name    = (string) cboxSuccessor.SelectedItem;
+                edge.name = edge.node_predecessor.name + "<->" + edge.node_successor.name + " : " + edge.weight.ToString();
+
                 add = true;
                 this.Close();
             }
         }
-
-        private void cboxTipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(cboxPredecessor.SelectedIndex > -1 && cboxSuccessor.SelectedIndex > -1 && cboxWeight.SelectedIndex > -1)
-                btnAdd.IsEnabled = true;
-            else
-                btnAdd.IsEnabled =false;
-        }
-        private void cboxInicial_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// This event method will enabled btnAdd button when the cboxPredecessor, chboxSucceessor and cboxWeight have a selected item.
+        /// </summary>
+        private void cboxPredecessor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cboxPredecessor.SelectedIndex > -1 && cboxSuccessor.SelectedIndex > -1 && cboxWeight.SelectedIndex > -1)
                 btnAdd.IsEnabled = true;
             else
                 btnAdd.IsEnabled = false;
         }
-        private void cboxFinal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// This event method will enabled btnAdd button when the cboxPredecessor, chboxSucceessor and cboxWeight have a selected item.
+        /// </summary>
+        private void cboxSuccessor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cboxPredecessor.SelectedIndex > -1 && cboxSuccessor.SelectedIndex > -1 && cboxWeight.SelectedIndex > -1)
                 btnAdd.IsEnabled = true;
             else
                 btnAdd.IsEnabled = false;
         }
-        private void cboxPeso_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// This event method will enabled btnAdd button when the cboxPredecessor, chboxSucceessor and cboxWeight have a selected item.
+        /// </summary>
+        private void cboxWeight_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cboxPredecessor.SelectedIndex > -1 && cboxSuccessor.SelectedIndex > -1 && cboxWeight.SelectedIndex > -1)
                 btnAdd.IsEnabled = true;

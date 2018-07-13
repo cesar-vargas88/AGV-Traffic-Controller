@@ -1,15 +1,15 @@
-﻿<Window x:Class="AGV_Traffic_Controller.AddNodeWindow"
+﻿<Window x:Class="AGV_Traffic_Controller.CreateMapWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AGV_Traffic_Controller"
-        mc:Ignorable="d" Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
-
+        mc:Ignorable="d"
+        Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
     <Grid>
         <TextBox x:Name="txtName" HorizontalAlignment="Center" Height="25" Margin="90,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="16" TextChanged="txtName_TextChanged"/>
-        <Button x:Name="btnAdd" Content="Agregar" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnAdd_Click" IsEnabled="False"/>
+        <Button x:Name="btnAdd" Content="Crear" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCreate_Click" IsEnabled="False"/>
         <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="104,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
-        <Label x:Name="lblName" Content="Nombre" HorizontalAlignment="Left" Margin="22,59,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblName" Content="Nombre" HorizontalAlignment="Left" Margin="22,59,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
     </Grid>
 </Window>

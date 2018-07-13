@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//////////////////////////////////////////////////////////////////////////
+//      Project           : AGV Traffic Controller
+//      Program name      : AGV Traffic Controller
+//      Author            : César Augusto Vargas Torres
+//      Date created      : 01/07/2018
+//      Purpose           : 
+//      Revision History  :
+//////////////////////////////////////////////////////////////////////////
+
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AGV_Traffic_Controller
 {
@@ -25,6 +23,11 @@ namespace AGV_Traffic_Controller
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Here we change the color of tab Items in order to let know the user which one is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tabItemMaps.IsSelected)
@@ -68,7 +71,5 @@ namespace AGV_Traffic_Controller
                 tabItemLogs.Foreground = Brushes.SteelBlue;
             }
         }
-
-
     }
 }

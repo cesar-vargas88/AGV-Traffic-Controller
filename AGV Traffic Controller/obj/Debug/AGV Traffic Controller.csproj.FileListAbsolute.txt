@@ -68,3 +68,105 @@ C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controlle
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\bin\Debug\System.Text.Encoding.CodePages.dll
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.exe.config
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.exe
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.pdb
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignColors.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\Microsoft.Win32.Primitives.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.AppContext.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Console.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Globalization.Calendars.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.Compression.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.Compression.ZipFile.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.FileSystem.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Net.Http.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Net.Sockets.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csprojAssemblyReference.cache
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddEdgeWindow.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddNodeWindow.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\MainWindow.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\User controls\ucMaps.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\App.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller_MarkupCompile.cache
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller_MarkupCompile.lref
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddEdgeWindow.baml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddNodeWindow.baml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\MainWindow.baml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\User controls\ucMaps.baml
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.g.resources
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV_Traffic_Controller.Properties.Resources.resources
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.GenerateResource.cache
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.CoreCompileInputs.cache
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.CopyComplete
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.exe
+C:\Users\gdlcesva\Downloads\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.pdb
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.exe.config
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.exe
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\AGV Traffic Controller.pdb
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignColors.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\Microsoft.Win32.Primitives.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.AppContext.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Console.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Globalization.Calendars.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.Compression.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.Compression.ZipFile.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.FileSystem.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Net.Http.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Net.Sockets.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csprojAssemblyReference.cache
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\User controls\ucMaps.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\App.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller_MarkupCompile.cache
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller_MarkupCompile.lref
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\User controls\ucMaps.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.g.resources
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV_Traffic_Controller.Properties.Resources.resources
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.GenerateResource.cache
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.CoreCompileInputs.cache
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.csproj.CopyComplete
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.exe
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AGV Traffic Controller.pdb
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\CreateMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddEdgeWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddNodeWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\MainWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\CreateMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddEdgeWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\AddNodeWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\MainWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\DeleteMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\LoadMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\DeleteMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\LoadMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CreateMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\DeleteMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\LoadMapWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CreateMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\DeleteMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\LoadMapWindow.baml

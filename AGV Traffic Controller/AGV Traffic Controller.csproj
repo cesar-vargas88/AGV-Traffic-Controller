@@ -115,20 +115,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateMapWindow.xaml.cs">
+      <DependentUpon>CreateMapWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddEdgeWindow.xaml.cs">
       <DependentUpon>AddEdgeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddNodeWindow.xaml.cs">
       <DependentUpon>AddNodeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Map.cs" />
+    <Compile Include="DeleteMapWindow.xaml.cs">
+      <DependentUpon>DeleteMapWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadMapWindow.xaml.cs">
+      <DependentUpon>LoadMapWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User controls\ucMaps.xaml.cs">
       <DependentUpon>ucMaps.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateMapWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddEdgeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddNodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteMapWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadMapWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,7 +162,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\AGVTrafficController.cs" />
     <Compile Include="Classes\TCPClient.cs" />
     <Compile Include="Classes\TCPServer.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -180,7 +201,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="warehouse layout.jpg" />
+    <Resource Include="Resources\warehouse layout.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

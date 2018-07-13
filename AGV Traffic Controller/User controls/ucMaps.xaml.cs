@@ -1,8 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,215 +11,196 @@ namespace AGV_Traffic_Controller
     /// Interaction logic for ucMaps.xaml
     /// </summary>
 
-    public struct Node
-    {
-        public string name;
-        public string color;
-        public int diameter;
-        public int x_position;
-        public int y_position;
-
-        public Node(string Name, string Color, int Diameter, int X_position, int Y_position)
-        {
-            name = Name;
-            color = Color;
-            diameter = Diameter;
-            x_position = X_position;
-            y_position = Y_position;
-        }
-    }
-    public struct Edge
-    {
-        public string name;
-        public int weight;
-        public string name_node_predecessor;
-        public int radian_node_predecessor;
-        public string name_node_successor;
-        public int radian_node_successor;
-
-        public string color;
-        public int width;
-
-        public Edge(string Name, int Weight, string Name_node_predecessor, int Radian_node_predecessor, string Name_node_successor, int Radian_node_successor, string Color, int Width)
-        {
-            name = Name;
-            weight = Weight;
-            name_node_predecessor = Name_node_predecessor;
-            radian_node_predecessor = Radian_node_predecessor;
-            name_node_successor = Name_node_successor;
-            radian_node_successor = Radian_node_successor;
-            color = Color;
-            width = Width;
-        }
-    }
-
     public partial class ucMaps
     {
-        private List<Node> list_Nodes;
-        private List<Edge> list_Edges;
-        private List<List<Edge>> AdjacencyLists;
+        private List<Map>   list_Maps;
+        private List<Node>  list_Nodes;
+        private List<Edge>  list_Edges;
 
-        private bool AddNode;
-        private const int Node_Diameter  = 20;
-        private const int Edge_Thickness = 3;
-        private const int CanvasMargin_X = 300;
-        private const int CanvasMargin_Y = 50;
+        private Map         mapSelected;
+
+        private Ellipse     nodeSelected;
+        private Line        edgeSelected;
+        private Brush       nodeColor;
+        private Brush       edgeColor;
+        private Brush       selectedNodeColor;
+        private Brush       selectedEdgeColor;
+
+        private bool        flagAddNode;
+
+        private const int node_Diameter  = 20;
+        private const int edge_Thickness = 3;
+        private const int canvasMargin_X = 302;
+        private const int canvasMargin_Y = 0;
 
         public ucMaps()
         {
             InitializeComponent();
 
-            list_Nodes      = new List<Node> { };
-            list_Edges      = new List<Edge> { };
-            AdjacencyLists  = new List<List<Edge>> { };
+            list_Nodes          = new List<Node> { };
+            list_Edges          = new List<Edge> { };
+            list_Maps           = new List<Map> { };
+            nodeSelected        = new Ellipse();
+            edgeSelected        = new Line();
+            nodeColor           = Brushes.Black;
+            edgeColor           = Brushes.Red;
+            selectedNodeColor   = Brushes.Green;
+            selectedEdgeColor   = Brushes.SteelBlue;
 
-            AddNode = false;
+            flagAddNode         = false;
         }
 
-        private void DrawNode(Brush color, int diameter, Point start)
+        private void btnLoadMaps_Click(object sender, RoutedEventArgs e)
         {
-            Ellipse elipse_Node = new Ellipse() { Fill = color, Height = diameter, Width = diameter };
+            LoadMapWindow loadMapWindow = new LoadMapWindow(list_Maps);
 
-            elipse_Node.SetValue(Canvas.LeftProperty, start.X);
-            elipse_Node.SetValue(Canvas.TopProperty, start.Y);
-
-            MyCanvas.Children.Add(elipse_Node);
-
-            AddNodeWindow addNodeWindow = new AddNodeWindow(list_Nodes);
-
-            if (addNodeWindow.ShowDialog() == false && addNodeWindow.add)
+            if (loadMapWindow.ShowDialog() == false && loadMapWindow.flagLoad)
             {
-                list_Nodes.Add
-                (
-                    new Node
-                    (
-                        addNodeWindow.txtName.Text, 
-                        color.ToString(), 
-                        diameter, 
-                        (int)start.X, 
-                        (int)start.Y
-                    )
-                );
-
-                lboxNodes.Items.Add(addNodeWindow.txtName.Text);
-
-                MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
-                elipse_Node.Name = addNodeWindow.txtName.Text;
-                MyCanvas.Children.Add(elipse_Node);
+               
             }
-            else
-                MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
-
-            AddNode = false;
-            btnAddNode.IsEnabled = true;
-            btnAddNodes.IsEnabled = true;
         }
-        private void DrawEdge(Brush color, int thickness)
+        private void btnCreateMaps_Click(object sender, RoutedEventArgs e)
         {
-            if(list_Nodes.Count > 0)
+            CreateMapWindow createMapWindow = new CreateMapWindow(list_Maps);
+
+            if (createMapWindow.ShowDialog() == false && createMapWindow.flagCreate)
             {
-                AddEdgeWindow addEdgeWindow = new AddEdgeWindow(list_Nodes, list_Edges);
+                mapSelected = list_Maps[list_Maps.Count - 1];
+                lblMapName.Content = mapSelected.name;
+            }
+        }
+        private void btnDeleteMaps_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteMapWindow deleteMapWindow = new DeleteMapWindow(list_Maps);
 
-                if (addEdgeWindow.ShowDialog() == false && addEdgeWindow.add)
+            if (deleteMapWindow.ShowDialog() == false && deleteMapWindow.flagDelete)
+            {
+
+            }
+            /*if (lboxMaps.SelectedIndex > -1)
+            {
+                ///<summary>
+                /// In this part we look deleted the Edge selected.
+                ///</summary>
+
+                for (int MapsIndex = 0; MapsIndex < list_Maps.Count; MapsIndex++)
                 {
-                    list_Edges.Add
-                    (
-                        new Edge
-                        (
-                            addEdgeWindow.edge.name, 
-                            addEdgeWindow.edge.weight,
-                            addEdgeWindow.edge.name_node_predecessor, 
-                            1, 
-                            addEdgeWindow.edge.name_node_successor, 
-                            1, 
-                            color.ToString(), 
-                            2 
-                        )
-                    );
-
-                    int x;
-                    int y = 0;
-
-                    Point Start = new Point();
-                    Point End   = new Point();
-
-                    for (x = 0; x < list_Nodes.Count; x++)
+                    if (list_Maps[MapsIndex].name == (string)lboxMaps.SelectedItem)
                     {
-                        if (list_Nodes[x].name == addEdgeWindow.edge.name_node_predecessor)
-                        {
-                            Start.X = list_Nodes[x].x_position + (list_Nodes[x].diameter / 2) + 1;
-                            Start.Y = list_Nodes[x].y_position + (list_Nodes[x].diameter / 2) + 1;
-
-                            y++;
-                        }
-                        if (list_Nodes[x].name == addEdgeWindow.edge.name_node_successor)
-                        {
-                            End.X = list_Nodes[x].x_position + (list_Nodes[x].diameter / 2) + 1;
-                            End.Y = list_Nodes[x].y_position + (list_Nodes[x].diameter / 2) + 1;
-
-                            y++;
-                        }
-                        if (y == 2)
-                            x = list_Nodes.Count;
+                        list_Maps.RemoveAt(MapsIndex);
+                        lboxMaps.Items.RemoveAt(MapsIndex);
+                        MapsIndex = list_Maps.Count;
                     }
-
-                    lboxEdges.Items.Add(addEdgeWindow.edge.name);
-
-                    Line newLine;
-                    
-                    newLine = new Line() { Stroke = color, X1 = Start.X, Y1 = Start.Y, X2 = End.X, Y2 = End.Y, StrokeThickness = thickness, StrokeStartLineCap = PenLineCap.Triangle, StrokeEndLineCap = PenLineCap.Triangle };
-
-                    MyCanvas.Children.Add(newLine);
                 }
             }
             else
-                MessageBox.Show("Para agregar una arista debe existir al menos un vertice.", "Error");
+                MessageBox.Show("Seleccione el mapa que desea eliminar.", "Error");*/
         }
 
+        /// <summary>
+        /// This method adds a Node in the list_Nodes, lboxNodes and myCanvas.
+        /// </summary>
         private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point start = e.GetPosition(this);
 
-            start.X = start.X - CanvasMargin_X - (Node_Diameter/2);
-            start.Y = start.Y - CanvasMargin_Y - (Node_Diameter/2);
+            start.X = start.X - canvasMargin_X - (node_Diameter / 2);
+            start.Y = start.Y - canvasMargin_Y - (node_Diameter / 2);
 
-            if(AddNode)
-                DrawNode(Brushes.Black, Node_Diameter, start);
+            if (flagAddNode)
+            {
+                Ellipse ellipse_Node = new Ellipse()
+                {
+                    Fill = nodeColor,
+                    Height = node_Diameter,
+                    Width = node_Diameter
+                };
+
+                ellipse_Node.SetValue(Canvas.LeftProperty, start.X);
+                ellipse_Node.SetValue(Canvas.TopProperty, start.Y);
+
+                MyCanvas.Children.Add(ellipse_Node);
+
+                AddNodeWindow addNodeWindow = new AddNodeWindow(list_Nodes);
+
+                if (addNodeWindow.ShowDialog() == false && addNodeWindow.flagAdd)
+                {
+                    list_Nodes.Add
+                    (
+                        new Node
+                        (
+                            addNodeWindow.txtName.Text,
+                            (int)start.X,
+                            (int)start.Y,
+                            ellipse_Node
+                        )
+                    );
+
+                    lboxNodes.Items.Add(addNodeWindow.txtName.Text);
+
+                    MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
+                    ellipse_Node.Name = addNodeWindow.txtName.Text;
+                    MyCanvas.Children.Add(ellipse_Node);
+                }
+                else
+                    MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
+
+                flagAddNode = false;
+                btnAddNodes.IsEnabled = true;
+            }
         }
-
-        private void btnCreateMaps_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btnDeleteMaps_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btnShowMaps_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// This method change the flagAddNode in order to allows the user to add a Node.
+        /// </summary>
         private void btnAddNodes_Click(object sender, RoutedEventArgs e)
         {
-            btnAddNode.IsEnabled = false;
             btnAddNodes.IsEnabled = false;
-            AddNode = true;
+            flagAddNode = true;
             
             //MessageBox.Show("De clic en la posición donde desea colocar el vértice.", "Información");
         }
+        /// <summary>
+        /// This method deletes the selected Node from the list_Node, lboxNode and myCanvas.
+        /// </summary>
         private void btnDeleteNodes_Click(object sender, RoutedEventArgs e)
         {
             if (lboxNodes.SelectedIndex > -1)
             {
                 int NodeIndex = 0;
 
+                ///<summary>
+                /// In this part we look deleted the Node selected.
+                ///</summary>
+                
                 for (int CanvasIndex = 0; CanvasIndex < MyCanvas.Children.Count; CanvasIndex++)
                 {
                     if (MyCanvas.Children[CanvasIndex].GetType().Name == "Ellipse")
                     {
                         if (NodeIndex == lboxNodes.SelectedIndex)
                         {
+                            int EdgesIndex = 0;
+
+                            ///<summary>
+                            /// In this part we look for a Edges related with the Node that we will to deleted. The purpose is to delete that Edges too.
+                            ///</summary>
+
+                            for (int canvasIndex = 0; canvasIndex < MyCanvas.Children.Count; canvasIndex++)
+                            {
+                                if (MyCanvas.Children[canvasIndex].GetType().Name == "Line")
+                                {
+                                    if (list_Edges[EdgesIndex].node_predecessor.name == list_Nodes[NodeIndex].name ||
+                                        list_Edges[EdgesIndex].node_successor.name   == list_Nodes[NodeIndex].name)
+                                    {
+                                        list_Edges.RemoveAt(EdgesIndex);
+                                        MyCanvas.Children.RemoveAt(canvasIndex);
+                                        lboxEdges.Items.RemoveAt(EdgesIndex);
+                                        canvasIndex--;
+                                    }
+                                    else
+                                        EdgesIndex++;
+                                }
+                            }
+                            
                             list_Nodes.RemoveAt(NodeIndex);
                             MyCanvas.Children.RemoveAt(CanvasIndex);
                             lboxNodes.Items.RemoveAt(NodeIndex);
@@ -237,22 +214,94 @@ namespace AGV_Traffic_Controller
             else
                 MessageBox.Show("Seleccione el vértice que desea eliminar.", "Error");
         }
-        private void btnSelectNodes_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
+        /// <summary>
+        /// This method adds a Edge in the list_Edges, lboxEdges and myCanvas.
+        /// </summary>
         private void btnAddEdges_Click(object sender, RoutedEventArgs e)
         {
-            DrawEdge(Brushes.Red, Edge_Thickness);
-        }
+            if (list_Nodes.Count > 0)
+            {
+                AddEdgeWindow addEdgeWindow = new AddEdgeWindow(list_Nodes, list_Edges);
+
+                if (addEdgeWindow.ShowDialog() == false && addEdgeWindow.add)
+                {
+                    Point Start = new Point();
+                    Point End   = new Point();
+                    Node node_predecessor = new Node();
+                    Node node_successor   = new Node();
+
+                    int EdgeIndex = 0;
+
+                    for (int NodeIndex = 0; NodeIndex < list_Nodes.Count; NodeIndex++)
+                    {
+                        if (list_Nodes[NodeIndex].name == addEdgeWindow.edge.node_predecessor.name)
+                        {
+                            node_predecessor = list_Nodes[NodeIndex];
+                            Start.X = list_Nodes[NodeIndex].x_position + (list_Nodes[NodeIndex].ellipse.Width  / 2) + 1;
+                            Start.Y = list_Nodes[NodeIndex].y_position + (list_Nodes[NodeIndex].ellipse.Height / 2) + 1;
+
+                            EdgeIndex++;
+                        }
+                        if (list_Nodes[NodeIndex].name == addEdgeWindow.edge.node_successor.name)
+                        {
+                            node_successor = list_Nodes[NodeIndex];
+                            End.X = list_Nodes[NodeIndex].x_position + (list_Nodes[NodeIndex].ellipse.Width  / 2) + 1;
+                            End.Y = list_Nodes[NodeIndex].y_position + (list_Nodes[NodeIndex].ellipse.Height / 2) + 1;
+
+                            EdgeIndex++;
+                        }
+                        if (EdgeIndex == 2)
+                            NodeIndex = list_Nodes.Count;
+                    }
+
+                    lboxEdges.Items.Add(addEdgeWindow.edge.name);
+
+                    Line line_Edge = new Line()
+                    {
+                        Stroke = edgeColor,
+                        X1 = Start.X,
+                        Y1 = Start.Y,
+                        X2 = End.X,
+                        Y2 = End.Y,
+                        StrokeThickness = edge_Thickness,
+                        StrokeStartLineCap = PenLineCap.Triangle,
+                        StrokeEndLineCap = PenLineCap.Triangle
+                    };
+
+                    list_Edges.Add
+                    (
+                        new Edge
+                        (
+                            addEdgeWindow.edge.name,
+                            addEdgeWindow.edge.weight,
+                            false,
+                            line_Edge,
+                            node_predecessor,
+                            node_successor
+                        )
+                    );
+
+                    MyCanvas.Children.Add(line_Edge);
+                }
+            }
+            else
+                MessageBox.Show("Para agregar una arista debe existir al menos un vertice.", "Error");
+        } 
+        /// <summary>
+        /// This method deletes the selected Edge from the list_Edges, lboxEdges and myCanvas.
+        /// </summary>
         private void btnDeleteEdges_Click(object sender, RoutedEventArgs e)
         {
             if (lboxEdges.SelectedIndex > -1)
             {
                 int EdgesIndex = 0;
 
-                for(int CanvasIndex = 0; CanvasIndex < MyCanvas.Children.Count; CanvasIndex++)
+                ///<summary>
+                /// In this part we look deleted the Edge selected.
+                ///</summary>
+                
+                for (int CanvasIndex = 0; CanvasIndex < MyCanvas.Children.Count; CanvasIndex++)
                 {
                     if (MyCanvas.Children[CanvasIndex].GetType().Name == "Line")
                     {
@@ -271,9 +320,38 @@ namespace AGV_Traffic_Controller
             else
                 MessageBox.Show("Seleccione la arista que desea eliminar.", "Error");
         }
-        private void btnSelectEdges_Click(object sender, RoutedEventArgs e)
-        {
 
+        /// <summary>
+        /// This method changes the color of the selected Node.
+        /// </summary>
+        private void lboxNodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ///<summary>
+            /// In this part we look chamge the color to the Node selected.
+            ///</summary>
+            ///
+            if (lboxNodes.SelectedIndex > -1)
+            {
+                nodeSelected.Fill = Brushes.Black;
+                list_Nodes[lboxNodes.SelectedIndex].ellipse.Fill = selectedNodeColor;
+                nodeSelected = list_Nodes[lboxNodes.SelectedIndex].ellipse;
+            }
+        }
+        /// <summary>
+        /// This method changes the color of the selected Edge.
+        /// </summary>
+        private void lboxEdges_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ///<summary>
+            /// In this part we look chamge the color to the Edge selected.
+            ///</summary>
+     
+            if (lboxEdges.SelectedIndex > -1)
+            {
+                edgeSelected.Stroke = Brushes.Red;
+                list_Edges[lboxEdges.SelectedIndex].line.Stroke = selectedEdgeColor;
+                edgeSelected = list_Edges[lboxEdges.SelectedIndex].line;
+            }
         }
     }
 }   

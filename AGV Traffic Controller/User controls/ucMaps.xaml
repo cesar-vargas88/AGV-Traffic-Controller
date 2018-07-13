@@ -6,31 +6,32 @@
              xmlns:local="clr-namespace:AGV_Traffic_Controller"
              mc:Ignorable="d">
     <Grid Background="{x:Null}">
-        <Grid Margin="0, 0,0, 0" Width="300" Background="SteelBlue" HorizontalAlignment="Left">
-
-            <Label x:Name="lblMaps" Content="Mapas" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-            <ListBox x:Name="lboxMaps" Margin="10,25"  Width="280" Height="100"  Background="White" Foreground="Gray" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
-            <Button x:Name="btnCreateMaps"     Content="Crear"       Foreground="White" Background="Gray" BorderBrush="White" Margin="3,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnCreateMaps_Click"/>
-            <Button x:Name="btnDeleteMaps"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="96,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteMaps_Click"/>
-            <Button x:Name="btnShowMaps"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="White" Margin="206,130,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnShowMaps_Click"/>
-
-            <Label x:Name="lblNodes" Content="Vértices" Margin="0,165,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-            <ListBox x:Name="lboxNodes" Margin="10,190"   Width="280" Height="200" Background="White" Foreground="Gray" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
-            <Button x:Name="btnAddNodes"  Content="Agregar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="3,395,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnAddNodes_Click"/>
-            <Button x:Name="btnDeleteNodes"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="96,395,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteNodes_Click"/>
-            <Button x:Name="btnSelectNodes"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="White" Margin="206,395,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnSelectNodes_Click"/>
+        <Grid Margin="0, 0,0, 0" Width="300" Background="White" HorizontalAlignment="Left">
             
-            <Label x:Name="lblEdges" Content="Aristas" Margin="0,430,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-            <ListBox x:Name="lboxEdges" Margin="10,455,10,0"      Width="280" Height="200" Background="White" Foreground="Gray" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
-            <Button x:Name="btnAddEdges"  Content="Agregar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="3,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnAddEdges_Click"/>
-            <Button x:Name="btnDeleteEdges"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="96,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteEdges_Click"/>
-            <Button x:Name="btnSelectEdges"  Content="Mostrar"   Foreground="White" Background="Gray" BorderBrush="White" Margin="206,660,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnSelectEdges_Click"/>
+            <Border BorderBrush="LightGray" BorderThickness="1" Margin="0,0,0,0"/>
+            
+            <Border Background="SteelBlue" BorderBrush="SteelBlue" BorderThickness="1" Margin="0,0,0,0" Width="299" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lblMapName" Content="" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="300" FontFamily="Calibri" FontSize="16"/>
+            <Button x:Name="btnLoadMaps"    Content="Cargar"   Foreground="White" Background="Gray" BorderBrush="White" Margin="96,35,0,-6.4" Width="80" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnLoadMaps_Click"/>
+            <Button x:Name="btnCreateMaps"  Content="Crear"       Foreground="White" Background="Gray" BorderBrush="White"   Margin="3,35,0,-6.4" Width="80" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnCreateMaps_Click"/>
+            <Button x:Name="btnDeleteMaps"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White"  Margin="206,35,0,-6.4" Width="80" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteMaps_Click"/>
+            
+            <Label x:Name="lblNodes" Content="Vértices" Margin="0,70,0,0" Foreground="SteelBlue" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxNodes" Margin="5,95"   Width="290" Height="140" Background="LightGray" Foreground="Black" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" SelectionChanged="lboxNodes_SelectionChanged"/>
+            <Button x:Name="btnAddNodes"  Content="Agregar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="3,240,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnAddNodes_Click"/>
+            <Button x:Name="btnDeleteNodes"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="96,240,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteNodes_Click"/>
 
+            <Label x:Name="lblEdges" Content="Aristas" Margin="0,280,0,0" Foreground="SteelBlue" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxEdges" Margin="5,305,5,0"      Width="290" Height="140" Background="LightGray" Foreground="SteelBlue" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" SelectionChanged="lboxEdges_SelectionChanged"/>
+            <Button x:Name="btnAddEdges"  Content="Agregar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="3,450,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnAddEdges_Click"/>
+            <Button x:Name="btnDeleteEdges"  Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White" Margin="96,450,0,-6.4" Width="90" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" Click="btnDeleteEdges_Click"/>
+
+            <Label x:Name="lblAdjacencyLists" Content="Lista de adyacencia" Margin="0,490,0,0" Foreground="SteelBlue" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxAdjacencyLists" Margin="5,515,5,5"      Width="290" Background="LightGray" Foreground="SteelBlue" BorderBrush="White" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" SelectionChanged="lboxEdges_SelectionChanged"/>
+        
         </Grid>
-        <Grid Margin="300, 0, 0, 0" Background="SteelBlue">
-            <Button x:Name="btnAddNode"  Content="Agregar vértice"   Foreground="White" Background="Gray" BorderBrush="White" Margin="0,0,0,0" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontFamily="Calibri" Click="btnAddNodes_Click"/>
-            <Button x:Name="btnAddEdge"  Content="Agregar arista"   Foreground="White" Background="Gray" BorderBrush="White" Margin="150,0,0,0" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontFamily="Calibri" Click="btnAddEdges_Click"/>
-            <Canvas Name="MyCanvas" Margin="0,50,0,0" Background="White" MouseDown="MyCanvas_MouseDown"/>
+        <Grid Margin="302, 0, 0, 0">
+            <Canvas Name="MyCanvas" Margin="0,0,0,0" Background="White" MouseDown="MyCanvas_MouseDown"/>
         </Grid>
     </Grid>
 </UserControl>
