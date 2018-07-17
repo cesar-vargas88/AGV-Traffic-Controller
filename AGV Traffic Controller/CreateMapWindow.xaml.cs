@@ -37,21 +37,21 @@ namespace AGV_Traffic_Controller
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtName.Text != "")
-                btnAdd.IsEnabled = true;
+                btnCREATE.IsEnabled = true;
             else
-                btnAdd.IsEnabled = false;
+                btnCREATE.IsEnabled = false;
         }
         /// <summary>
         /// This method will close the window.
         /// </summary>
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void btnCANCEL_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
         /// <summary>
         /// This method verify that the Node doesn't exist, if that is true changes the flagAdd to true and close the window. 
         /// </summary>
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void btnCREATE_Click(object sender, RoutedEventArgs e)
         {
             int NodeIndex;
 
@@ -59,7 +59,7 @@ namespace AGV_Traffic_Controller
             {
                 if (list_Maps[NodeIndex].name == txtName.Text)
                 {
-                    MessageBox.Show("Ya existe un vértice con ese nombre.", "Error");
+                    MessageBox.Show("Ya existe un mapa con ese nombre.", "Error");
                     NodeIndex = list_Maps.Count + 1;
                 }
             }

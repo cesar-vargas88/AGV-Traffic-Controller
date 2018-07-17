@@ -5,11 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AGV_Traffic_Controller"
         mc:Ignorable="d"
-        Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
+        Height="162" Width="315" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
     <Grid>
-        <ListBox x:Name="lboxMaps" Margin="23,25,15.2,0"  Width="245" Height="108"  Background="LightGray" Foreground="White" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" SelectionChanged="lboxMaps_SelectionChanged"/>
-        <Button x:Name="btnLoad" Content="Cargar" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnLoad_Click" IsEnabled="False"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="104,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
-        <Label x:Name="lblMaps" Content="Mapas" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" />
+        <Grid Margin="0,0,0,0" Height="82" VerticalAlignment="Top">
+            <ListBox x:Name="lboxMaps" Margin="10,10,9.8,0"  Width="289" Height="62"  Background="LightGray" Foreground="Black" BorderBrush="White" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="12" SelectionChanged="lboxMaps_SelectionChanged"/>
+        </Grid>
+        <Grid Margin="0,82,0,0" Background="LightGray">
+            <Button x:Name="btnLoad"      Content="Cargar"        Width="75" Height="25" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnLoad_Click"        Margin="120,12.5,0,0" IsEnabled="False"/>
+            <Button x:Name="btnCancel"  Content="Cancelar"  Width="75" Height="25" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnCancel_Click"    Margin="206,12.5,0,0"/>
+        </Grid>
     </Grid>
 </Window>

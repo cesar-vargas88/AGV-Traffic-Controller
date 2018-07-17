@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace AGV_Traffic_Controller
 {
@@ -14,8 +18,6 @@ namespace AGV_Traffic_Controller
     public partial class ucMaps
     {
         private List<Map>   list_Maps;
-        private List<Node>  list_Nodes;
-        private List<Edge>  list_Edges;
 
         private Map         mapSelected;
 
@@ -37,28 +39,211 @@ namespace AGV_Traffic_Controller
         {
             InitializeComponent();
 
-            list_Nodes          = new List<Node> { };
-            list_Edges          = new List<Edge> { };
-            list_Maps           = new List<Map> { };
+            mapSelected         = new Map("");
             nodeSelected        = new Ellipse();
             edgeSelected        = new Line();
             nodeColor           = Brushes.Black;
             edgeColor           = Brushes.Red;
             selectedNodeColor   = Brushes.Green;
             selectedEdgeColor   = Brushes.SteelBlue;
-
             flagAddNode         = false;
+
+            ValidateRoboflexRunning();
+            CreateDirectories("C:/AGV_Traffic_Controller/", "C:/AGV_Traffic_Controller/Maps/");
+            list_Maps = LoadMaps("C:/AGV_Traffic_Controller/Maps/");
         }
 
-        private void btnLoadMaps_Click(object sender, RoutedEventArgs e)
+        private void ValidateRoboflexRunning()
         {
-            LoadMapWindow loadMapWindow = new LoadMapWindow(list_Maps);
-
-            if (loadMapWindow.ShowDialog() == false && loadMapWindow.flagLoad)
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-               
+                MessageBox.Show("There is other  " + Process.GetCurrentProcess().ProcessName + " running, it will be closed to open a new one.", "Error");
+                {
+                    Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName)[0].Kill();
+                }
             }
         }
+        private void CreateDirectories(string DirectoriesBase, string DirectoriesMaps)
+        {
+            if (!Directory.Exists(DirectoriesBase))
+                Directory.CreateDirectory(DirectoriesBase);
+            if (Directory.Exists(DirectoriesBase) && !Directory.Exists(DirectoriesMaps))
+                    Directory.CreateDirectory(DirectoriesMaps);
+        }
+        private List<Map> LoadMaps(string Path)
+        {
+            string[] fileEntries = Directory.GetFiles(Path);
+            List<Map> List_Maps  = new List<Map>();
+
+            for (int Index = 0; Index < fileEntries.Length; Index++)
+            {
+                if (fileEntries[Index].Substring(fileEntries[Index].Length - 4, 4) == ".xml")
+                {
+                    List<string> list_Xml = new List<string>();
+                    XmlReader reader      = XmlReader.Create(fileEntries[Index]);
+                    Map map = new Map("");
+
+                    while (reader.Read())
+                    {
+                        if (reader.NodeType == XmlNodeType.Element || reader.NodeType == XmlNodeType.EndElement)
+                            list_Xml.Add(reader.Name);
+                        else if (reader.NodeType == XmlNodeType.Text)
+                            list_Xml.Add(reader.Value);
+
+                        reader.MoveToElement();
+                    }
+
+                    if (list_Xml.Count > 2 && list_Xml[0] == "map")
+                    {
+                        list_Xml.RemoveAt(0);
+
+                        if (list_Xml[list_Xml.Count - 1] == "map")
+                            list_Xml.RemoveAt(list_Xml.Count - 1);
+
+                        if (list_Xml.Count > 1 && list_Xml[0] == "name" && list_Xml.Count > 1 && list_Xml[2] == "name")
+                        {
+                            map.name = list_Xml[1];
+                            list_Xml.RemoveRange(0, 3);
+
+                            if (list_Xml.Count > 2 && list_Xml[0] == "nodes")
+                            {
+                                list_Xml.RemoveAt(0);
+
+                                while (list_Xml.Count > 19 && list_Xml[0] == "node")
+                                {
+                                    list_Xml.RemoveAt(0);
+
+                                    if (list_Xml.Count > 3                  &&
+                                        list_Xml[0] == "name"               && list_Xml[2] == "name"            &&
+                                        list_Xml[3] == "x_position"         && list_Xml[5] == "x_position"      &&
+                                        list_Xml[6] == "y_position"         && list_Xml[8] == "y_position"      &&
+                                        list_Xml[9] == "ellipse_Fill"       && list_Xml[11] == "ellipse_Fill"   &&
+                                        list_Xml[12] == "ellipse_Height"    && list_Xml[14] == "ellipse_Height" &&
+                                        list_Xml[15] == "ellipse_Width"     && list_Xml[17] == "ellipse_Width"  )
+                                    {
+                                        double ellipse_height;
+                                        double ellipse_width;
+                                        int x_position;
+                                        int y_position;
+
+                                        if (int.TryParse(list_Xml[4], out x_position) &&
+                                            int.TryParse(list_Xml[7], out y_position) &&
+                                            double.TryParse(list_Xml[13], out ellipse_height) &&
+                                            double.TryParse(list_Xml[16], out ellipse_width))
+                                        {
+                                            map.AddNode
+                                            (
+                                                list_Xml[1],
+                                                x_position,
+                                                y_position,
+                                                new Ellipse()
+                                                {
+                                                    Fill = nodeColor,
+                                                    Height = ellipse_height,
+                                                    Width = ellipse_width
+                                                }
+                                            );
+
+                                            Point Position = new Point {X = x_position, Y = y_position};
+
+                                            map.GetList_Nodes()[map.GetList_Nodes().Count - 1].ellipse.SetValue(Canvas.LeftProperty, Position.X);
+                                            map.GetList_Nodes()[map.GetList_Nodes().Count - 1].ellipse.SetValue(Canvas.TopProperty, Position.Y);
+                                        }
+
+                                        list_Xml.RemoveRange(0, 19);
+                                    }
+                                }
+                                list_Xml.RemoveAt(0);
+                            }
+                            if (list_Xml.Count > 2 && list_Xml[0] == "edges")
+                            {
+                                list_Xml.RemoveAt(0);
+
+                                while (list_Xml.Count > 33 && list_Xml[0] == "edge")
+                                {
+                                    list_Xml.RemoveAt(0);
+
+                                    if (list_Xml.Count > 33 &&
+                                        list_Xml[0]  == "name"                      && list_Xml[2]  == "name"                   &&
+                                        list_Xml[3]  == "weight"                    && list_Xml[5]  == "weight"                 &&
+                                        list_Xml[6]  == "directed"                  && list_Xml[8]  == "directed"               &&
+                                        list_Xml[9]  == "node_predecessor"          && list_Xml[11] == "node_predecessor"       &&
+                                        list_Xml[12] == "node_successor"            && list_Xml[14] == "node_successor"         &&
+                                        list_Xml[15] == "line_Stroke"               && list_Xml[17] == "line_Stroke"            &&
+                                        list_Xml[18] == "line_X1"                   && list_Xml[20] == "line_X1"                &&
+                                        list_Xml[21] == "line_Y1"                   && list_Xml[23] == "line_Y1"                &&
+                                        list_Xml[24] == "line_X2"                   && list_Xml[26] == "line_X2"                &&
+                                        list_Xml[27] == "line_Y2"                   && list_Xml[29] == "line_Y2"                &&
+                                        list_Xml[30] == "line_StrokeThickness"      && list_Xml[32] == "line_StrokeThickness"   )
+                                    {
+                                        int weight;
+                                        bool directed;
+                                        int line_X1;
+                                        int line_Y1;
+                                        int line_X2;
+                                        int line_Y2;
+                                        int line_StrokeThicknes;
+
+                                        if (int.TryParse    (list_Xml[4]    , out weight)               &&
+                                            bool.TryParse   (list_Xml[7]    , out directed)             &&
+                                            int.TryParse    (list_Xml[19]   , out line_X1)              &&
+                                            int.TryParse    (list_Xml[22]   , out line_Y1)              &&
+                                            int.TryParse    (list_Xml[25]   , out line_X2)              &&
+                                            int.TryParse    (list_Xml[28]   , out line_Y2)              &&
+                                            int.TryParse    (list_Xml[31]   , out line_StrokeThicknes)  )
+                                        {
+                                            BrushConverter conv = new BrushConverter();
+                                            Brush line_Stroke = conv.ConvertFromString("Red") as Brush;
+
+                                            Node Node_predecessor = new Node() { name = "" };
+                                            Node Node_successor = new Node() { name = "" };
+
+                                            int IndexNode = 0;
+
+                                            while (Node_predecessor.name == "" || Node_successor.name == "")
+                                            {
+                                                if (map.GetList_Nodes()[IndexNode].name == list_Xml[10])
+                                                    Node_predecessor = map.GetList_Nodes()[IndexNode];
+                                                if (map.GetList_Nodes()[IndexNode].name == list_Xml[13])
+                                                    Node_successor   = map.GetList_Nodes()[IndexNode];
+
+                                                IndexNode++;
+                                            }
+
+                                            map.AddEdge
+                                            (
+                                                list_Xml[1],
+                                                weight,
+                                                directed,
+                                                new Line()
+                                                {
+                                                    Stroke = line_Stroke,
+                                                    X1 = line_X1,
+                                                    Y1 = line_Y1,
+                                                    X2 = line_X2,
+                                                    Y2 = line_Y2,
+                                                    StrokeThickness = edge_Thickness
+                                                },
+                                                Node_predecessor,
+                                                Node_successor
+                                            );
+                                        }
+
+                                        list_Xml.RemoveRange(0, 34);
+                                    }
+                                }
+                            }
+
+                            List_Maps.Add(map);
+                        }
+                    }
+                    
+                }
+            }
+
+            return List_Maps;
+        }
+
         private void btnCreateMaps_Click(object sender, RoutedEventArgs e)
         {
             CreateMapWindow createMapWindow = new CreateMapWindow(list_Maps);
@@ -66,35 +251,108 @@ namespace AGV_Traffic_Controller
             if (createMapWindow.ShowDialog() == false && createMapWindow.flagCreate)
             {
                 mapSelected = list_Maps[list_Maps.Count - 1];
+                mapSelected.CreateXML("C:/AGV_Traffic_Controller/Maps/");
                 lblMapName.Content = mapSelected.name;
+
+                lblNodes.Visibility = Visibility.Visible;
+                lboxNodes.Visibility = Visibility.Visible;
+                btnAddNodes.Visibility = Visibility.Visible;
+                btnDeleteNodes.Visibility = Visibility.Visible;
+                lblEdges.Visibility = Visibility.Visible;
+                lboxEdges.Visibility = Visibility.Visible;
+                btnAddEdges.Visibility = Visibility.Visible;
+                btnDeleteEdges.Visibility = Visibility.Visible;
+                lblAdjacencyLists.Visibility = Visibility.Visible;
+                lboxAdjacencyLists.Visibility = Visibility.Visible;
+
+                btnCreateMaps.Visibility = Visibility.Hidden;
+                btnLoadMaps.Visibility   = Visibility.Hidden;
+                btnSaveMaps.Visibility   = Visibility.Visible;
+                btnCloseMaps.Visibility  = Visibility.Visible;
             }
         }
-        private void btnDeleteMaps_Click(object sender, RoutedEventArgs e)
+        private void btnLoadMaps_Click(object sender, RoutedEventArgs e)
         {
-            DeleteMapWindow deleteMapWindow = new DeleteMapWindow(list_Maps);
+            LoadMapWindow loadMapWindow = new LoadMapWindow(list_Maps);
 
-            if (deleteMapWindow.ShowDialog() == false && deleteMapWindow.flagDelete)
+            if (loadMapWindow.ShowDialog() == false && loadMapWindow.flagLoad)
             {
+                lblNodes.Visibility = Visibility.Visible;
+                lboxNodes.Visibility = Visibility.Visible;
+                btnAddNodes.Visibility = Visibility.Visible;
+                btnDeleteNodes.Visibility = Visibility.Visible;
+                lblEdges.Visibility = Visibility.Visible;
+                lboxEdges.Visibility = Visibility.Visible;
+                btnAddEdges.Visibility = Visibility.Visible;
+                btnDeleteEdges.Visibility = Visibility.Visible;
+                lblAdjacencyLists.Visibility = Visibility.Visible;
+                lboxAdjacencyLists.Visibility = Visibility.Visible;
 
-            }
-            /*if (lboxMaps.SelectedIndex > -1)
-            {
-                ///<summary>
-                /// In this part we look deleted the Edge selected.
-                ///</summary>
+                btnCreateMaps.Visibility = Visibility.Hidden;
+                btnLoadMaps.Visibility = Visibility.Hidden;
+                btnSaveMaps.Visibility = Visibility.Visible;
+                btnCloseMaps.Visibility = Visibility.Visible;
 
-                for (int MapsIndex = 0; MapsIndex < list_Maps.Count; MapsIndex++)
+                mapSelected = loadMapWindow.map;
+
+                lblMapName.Content = mapSelected.name;
+
+                for(int Index = 0 ; Index < mapSelected.GetList_Nodes().Count; Index++)
                 {
-                    if (list_Maps[MapsIndex].name == (string)lboxMaps.SelectedItem)
-                    {
-                        list_Maps.RemoveAt(MapsIndex);
-                        lboxMaps.Items.RemoveAt(MapsIndex);
-                        MapsIndex = list_Maps.Count;
-                    }
+                    lboxNodes.Items.Add(mapSelected.GetList_Nodes()[Index].name);
+                    MyCanvas.Children.Add(mapSelected.GetList_Nodes()[Index].ellipse);
                 }
+                for (int Index = 0; Index < mapSelected.GetList_Edges().Count; Index++)
+                {
+                    lboxEdges.Items.Add(mapSelected.GetList_Edges()[Index].name);
+                    MyCanvas.Children.Add(mapSelected.GetList_Edges()[Index].line);
+                }   
+                
             }
-            else
-                MessageBox.Show("Seleccione el mapa que desea eliminar.", "Error");*/
+        }    
+        private void btnSaveMaps_Click(object sender, RoutedEventArgs e)
+        {
+            SaveWindow saveWindow = new SaveWindow();
+
+            saveWindow.ShowDialog();
+
+            mapSelected.CreateXML("C:/AGV_Traffic_Controller/Maps/");
+            MyCanvas.Children.Clear();
+        }
+        private void btnCloseMaps_Click(object sender, RoutedEventArgs e)
+        {
+            CloseWindow closeWindow = new CloseWindow("¿Desea guardar el mapa actual?");
+            
+            if (closeWindow.ShowDialog() == false)
+            {
+                if      (closeWindow.Result == "YES")
+                    mapSelected.CreateXML("C:/AGV_Traffic_Controller/Maps / ");
+                else if (closeWindow.Result == "CANCEL")
+                    return;
+            }
+
+            mapSelected = null;
+            lblMapName.Content  = "";
+
+            lblNodes.Visibility = Visibility.Hidden;
+            lboxNodes.Visibility = Visibility.Hidden;
+            btnAddNodes.Visibility = Visibility.Hidden;
+            btnDeleteNodes.Visibility = Visibility.Hidden;
+            lblEdges.Visibility = Visibility.Hidden;
+            lboxEdges.Visibility = Visibility.Hidden;
+            btnAddEdges.Visibility = Visibility.Hidden;
+            btnDeleteEdges.Visibility = Visibility.Hidden;
+            lblAdjacencyLists.Visibility = Visibility.Hidden;
+            lboxAdjacencyLists.Visibility = Visibility.Hidden;
+
+            btnCreateMaps.Visibility = Visibility.Visible;
+            btnLoadMaps.Visibility = Visibility.Visible;
+            btnSaveMaps.Visibility = Visibility.Hidden;
+            btnCloseMaps.Visibility = Visibility.Hidden;
+
+            MyCanvas.Children.Clear();
+            lboxEdges.Items.Clear();
+            lboxNodes.Items.Clear();
         }
 
         /// <summary>
@@ -121,23 +379,12 @@ namespace AGV_Traffic_Controller
 
                 MyCanvas.Children.Add(ellipse_Node);
 
-                AddNodeWindow addNodeWindow = new AddNodeWindow(list_Nodes);
+                AddNodeWindow addNodeWindow = new AddNodeWindow(mapSelected.GetList_Nodes());
 
                 if (addNodeWindow.ShowDialog() == false && addNodeWindow.flagAdd)
                 {
-                    list_Nodes.Add
-                    (
-                        new Node
-                        (
-                            addNodeWindow.txtName.Text,
-                            (int)start.X,
-                            (int)start.Y,
-                            ellipse_Node
-                        )
-                    );
-
+                    mapSelected.AddNode(addNodeWindow.txtName.Text, (int)start.X, (int)start.Y, ellipse_Node);                   
                     lboxNodes.Items.Add(addNodeWindow.txtName.Text);
-
                     MyCanvas.Children.RemoveAt(MyCanvas.Children.Count - 1);
                     ellipse_Node.Name = addNodeWindow.txtName.Text;
                     MyCanvas.Children.Add(ellipse_Node);
@@ -188,10 +435,10 @@ namespace AGV_Traffic_Controller
                             {
                                 if (MyCanvas.Children[canvasIndex].GetType().Name == "Line")
                                 {
-                                    if (list_Edges[EdgesIndex].node_predecessor.name == list_Nodes[NodeIndex].name ||
-                                        list_Edges[EdgesIndex].node_successor.name   == list_Nodes[NodeIndex].name)
+                                    if (mapSelected.GetList_Edges()[EdgesIndex].node_predecessor.name == mapSelected.GetList_Nodes()[NodeIndex].name ||
+                                        mapSelected.GetList_Edges()[EdgesIndex].node_successor.name   == mapSelected.GetList_Nodes()[NodeIndex].name)
                                     {
-                                        list_Edges.RemoveAt(EdgesIndex);
+                                        mapSelected.GetList_Edges().RemoveAt(EdgesIndex);
                                         MyCanvas.Children.RemoveAt(canvasIndex);
                                         lboxEdges.Items.RemoveAt(EdgesIndex);
                                         canvasIndex--;
@@ -200,8 +447,8 @@ namespace AGV_Traffic_Controller
                                         EdgesIndex++;
                                 }
                             }
-                            
-                            list_Nodes.RemoveAt(NodeIndex);
+
+                            mapSelected.RemoveNode(NodeIndex);
                             MyCanvas.Children.RemoveAt(CanvasIndex);
                             lboxNodes.Items.RemoveAt(NodeIndex);
                             CanvasIndex = MyCanvas.Children.Count;
@@ -220,9 +467,9 @@ namespace AGV_Traffic_Controller
         /// </summary>
         private void btnAddEdges_Click(object sender, RoutedEventArgs e)
         {
-            if (list_Nodes.Count > 0)
+            if (mapSelected.GetList_Nodes().Count > 0)
             {
-                AddEdgeWindow addEdgeWindow = new AddEdgeWindow(list_Nodes, list_Edges);
+                AddEdgeWindow addEdgeWindow = new AddEdgeWindow(mapSelected.GetList_Nodes(), mapSelected.GetList_Edges());
 
                 if (addEdgeWindow.ShowDialog() == false && addEdgeWindow.add)
                 {
@@ -233,55 +480,31 @@ namespace AGV_Traffic_Controller
 
                     int EdgeIndex = 0;
 
-                    for (int NodeIndex = 0; NodeIndex < list_Nodes.Count; NodeIndex++)
+                    for (int NodeIndex = 0; NodeIndex < mapSelected.GetList_Nodes().Count; NodeIndex++)
                     {
-                        if (list_Nodes[NodeIndex].name == addEdgeWindow.edge.node_predecessor.name)
+                        if (mapSelected.GetList_Nodes()[NodeIndex].name == addEdgeWindow.edge.node_predecessor.name)
                         {
-                            node_predecessor = list_Nodes[NodeIndex];
-                            Start.X = list_Nodes[NodeIndex].x_position + (list_Nodes[NodeIndex].ellipse.Width  / 2) + 1;
-                            Start.Y = list_Nodes[NodeIndex].y_position + (list_Nodes[NodeIndex].ellipse.Height / 2) + 1;
+                            node_predecessor = mapSelected.GetList_Nodes()[NodeIndex];
+                            Start.X = mapSelected.GetList_Nodes()[NodeIndex].x_position + (mapSelected.GetList_Nodes()[NodeIndex].ellipse.Width  / 2) + 1;
+                            Start.Y = mapSelected.GetList_Nodes()[NodeIndex].y_position + (mapSelected.GetList_Nodes()[NodeIndex].ellipse.Height / 2) + 1;
 
                             EdgeIndex++;
                         }
-                        if (list_Nodes[NodeIndex].name == addEdgeWindow.edge.node_successor.name)
+                        if (mapSelected.GetList_Nodes()[NodeIndex].name == addEdgeWindow.edge.node_successor.name)
                         {
-                            node_successor = list_Nodes[NodeIndex];
-                            End.X = list_Nodes[NodeIndex].x_position + (list_Nodes[NodeIndex].ellipse.Width  / 2) + 1;
-                            End.Y = list_Nodes[NodeIndex].y_position + (list_Nodes[NodeIndex].ellipse.Height / 2) + 1;
+                            node_successor = mapSelected.GetList_Nodes()[NodeIndex];
+                            End.X = mapSelected.GetList_Nodes()[NodeIndex].x_position + (mapSelected.GetList_Nodes()[NodeIndex].ellipse.Width  / 2) + 1;
+                            End.Y = mapSelected.GetList_Nodes()[NodeIndex].y_position + (mapSelected.GetList_Nodes()[NodeIndex].ellipse.Height / 2) + 1;
 
                             EdgeIndex++;
                         }
                         if (EdgeIndex == 2)
-                            NodeIndex = list_Nodes.Count;
+                            NodeIndex = mapSelected.GetList_Nodes().Count;
                     }
 
                     lboxEdges.Items.Add(addEdgeWindow.edge.name);
-
-                    Line line_Edge = new Line()
-                    {
-                        Stroke = edgeColor,
-                        X1 = Start.X,
-                        Y1 = Start.Y,
-                        X2 = End.X,
-                        Y2 = End.Y,
-                        StrokeThickness = edge_Thickness,
-                        StrokeStartLineCap = PenLineCap.Triangle,
-                        StrokeEndLineCap = PenLineCap.Triangle
-                    };
-
-                    list_Edges.Add
-                    (
-                        new Edge
-                        (
-                            addEdgeWindow.edge.name,
-                            addEdgeWindow.edge.weight,
-                            false,
-                            line_Edge,
-                            node_predecessor,
-                            node_successor
-                        )
-                    );
-
+                    Line line_Edge = new Line() { Stroke = edgeColor, X1 = Start.X, Y1 = Start.Y, X2 = End.X, Y2 = End.Y, StrokeThickness = edge_Thickness};
+                    mapSelected.AddEdge(addEdgeWindow.edge.name, addEdgeWindow.edge.weight, false, line_Edge, node_predecessor, node_successor);
                     MyCanvas.Children.Add(line_Edge);
                 }
             }
@@ -307,7 +530,7 @@ namespace AGV_Traffic_Controller
                     {
                         if (EdgesIndex == lboxEdges.SelectedIndex)
                         {
-                            list_Edges.RemoveAt(EdgesIndex);
+                            mapSelected.RemoveEdge(EdgesIndex);
                             MyCanvas.Children.RemoveAt(CanvasIndex);
                             lboxEdges.Items.RemoveAt(EdgesIndex);
                             CanvasIndex = MyCanvas.Children.Count;
@@ -333,8 +556,8 @@ namespace AGV_Traffic_Controller
             if (lboxNodes.SelectedIndex > -1)
             {
                 nodeSelected.Fill = Brushes.Black;
-                list_Nodes[lboxNodes.SelectedIndex].ellipse.Fill = selectedNodeColor;
-                nodeSelected = list_Nodes[lboxNodes.SelectedIndex].ellipse;
+                mapSelected.GetList_Nodes()[lboxNodes.SelectedIndex].ellipse.Fill = selectedNodeColor;
+                nodeSelected = mapSelected.GetList_Nodes()[lboxNodes.SelectedIndex].ellipse;
             }
         }
         /// <summary>
@@ -349,8 +572,8 @@ namespace AGV_Traffic_Controller
             if (lboxEdges.SelectedIndex > -1)
             {
                 edgeSelected.Stroke = Brushes.Red;
-                list_Edges[lboxEdges.SelectedIndex].line.Stroke = selectedEdgeColor;
-                edgeSelected = list_Edges[lboxEdges.SelectedIndex].line;
+                mapSelected.GetList_Edges()[lboxEdges.SelectedIndex].line.Stroke = selectedEdgeColor;
+                edgeSelected = mapSelected.GetList_Edges()[lboxEdges.SelectedIndex].line;
             }
         }
     }

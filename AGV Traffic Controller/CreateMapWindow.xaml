@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AGV_Traffic_Controller"
         mc:Ignorable="d"
-        Height="220" Width="290" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" >
+        Height="162" Width="315" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" BorderBrush="Black" >
     <Grid>
-        <TextBox x:Name="txtName" HorizontalAlignment="Center" Height="25" Margin="90,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="16" TextChanged="txtName_TextChanged"/>
-        <Button x:Name="btnAdd" Content="Crear" HorizontalAlignment="Left" Margin="193,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCreate_Click" IsEnabled="False"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="104,150,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Click="btnCancel_Click"/>
-        <Label x:Name="lblName" Content="Nombre" HorizontalAlignment="Left" Margin="22,59,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+        <Grid Margin="0,0,0,0" Height="82" VerticalAlignment="Top">
+            <TextBox x:Name="txtName" FontSize="14" Height="24"  VerticalAlignment="Center" HorizontalContentAlignment="Center" TextChanged="txtName_TextChanged" Margin="96,29,26.8,29"/>
+            <Label x:Name="lblName" Content="Nombre"  VerticalAlignment="Center" FontSize="14" FontFamily="Calibri" Width="62" Height="24" Margin="33,29,213.8,29"/>
+        </Grid>
+        <Grid Margin="0,82,0,0" Background="LightGray">
+            <Button x:Name="btnCREATE"  Content="Crear"     Width="75" Height="25" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnCREATE_Click" Margin="120,12.5,0,0" IsEnabled="False"/>
+            <Button x:Name="btnCANCEL"  Content="Cancelar"  Width="75" Height="25" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnCANCEL_Click" Margin="206,12.5,0,0"/>
+        </Grid>
     </Grid>
 </Window>

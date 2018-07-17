@@ -165,8 +165,10 @@ C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controlle
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\DeleteMapWindow.baml
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV-Traffic-Controller-master\AGV-Traffic-Controller-master\AGV Traffic Controller\obj\Debug\LoadMapWindow.baml
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CreateMapWindow.g.cs
-C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\DeleteMapWindow.g.cs
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\LoadMapWindow.g.cs
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CreateMapWindow.baml
-C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\DeleteMapWindow.baml
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\LoadMapWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CloseWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CloseWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\SaveWindow.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\SaveWindow.baml

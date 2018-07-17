@@ -26,8 +26,6 @@ namespace AGV_Traffic_Controller
         /// <summary>
         /// Here we change the color of tab Items in order to let know the user which one is selected.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tabItemMaps.IsSelected)

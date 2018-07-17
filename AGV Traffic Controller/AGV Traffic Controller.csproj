@@ -115,6 +115,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CloseWindow.xaml.cs">
+      <DependentUpon>CloseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateMapWindow.xaml.cs">
       <DependentUpon>CreateMapWindow.xaml</DependentUpon>
     </Compile>
@@ -125,15 +128,19 @@
       <DependentUpon>AddNodeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Map.cs" />
-    <Compile Include="DeleteMapWindow.xaml.cs">
-      <DependentUpon>DeleteMapWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LoadMapWindow.xaml.cs">
       <DependentUpon>LoadMapWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaveWindow.xaml.cs">
+      <DependentUpon>SaveWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="User controls\ucMaps.xaml.cs">
       <DependentUpon>ucMaps.xaml</DependentUpon>
     </Compile>
+    <Page Include="CloseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateMapWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,10 +150,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddNodeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeleteMapWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +171,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SaveWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User controls\ucMaps.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

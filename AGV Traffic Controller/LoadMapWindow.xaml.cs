@@ -22,6 +22,7 @@ namespace AGV_Traffic_Controller
         public bool flagLoad;
 
         private List<Map> list_Maps;
+        public Map map;
 
         public LoadMapWindow(List<Map> List_Maps)
         {
@@ -29,6 +30,9 @@ namespace AGV_Traffic_Controller
 
             list_Maps = List_Maps;
             flagLoad = false;
+
+            for (int MapIndex = 0; MapIndex < list_Maps.Count; MapIndex++)
+                lboxMaps.Items.Add(list_Maps[MapIndex].name);
         }
 
         /// <summary>
@@ -36,7 +40,7 @@ namespace AGV_Traffic_Controller
         /// </summary>
         private void lboxMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Close();
+            btnLoad.IsEnabled = true;
         }
         /// <summary>
         /// This method will close the window.
@@ -47,7 +51,9 @@ namespace AGV_Traffic_Controller
         }
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-
+            map = list_Maps[lboxMaps.SelectedIndex];
+            flagLoad = true;
+            this.Close();
         }
     }
 }
