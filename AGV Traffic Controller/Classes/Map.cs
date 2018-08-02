@@ -43,6 +43,7 @@ namespace AGV_Traffic_Controller
             node_successor = Node_successor;
         }
     }
+
     public class Map
     {
         public string name;
@@ -154,6 +155,15 @@ namespace AGV_Traffic_Controller
 
                 return System.IO.File.ReadAllText(Path + "/" + name + ".xml");
             }
+        }
+
+        private List<List<Edge>> CreateMap()
+        {
+            return AdjacencyLists;
+        }
+        public void GetGraph()
+        {
+
         }
     }
 }

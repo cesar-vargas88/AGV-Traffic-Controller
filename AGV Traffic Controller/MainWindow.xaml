@@ -27,7 +27,7 @@
             <TabItem x:Name="tabItemRobots" Foreground="#FF4F4B4B" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" FontWeight="Bold" FontFamily="Calibri" Width="150" Height="80">
                 <TabItem.Header>
                     <StackPanel>
-                        <materialDesign:PackIcon Kind="Robot" Height="50" Width="50" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Radio" Height="50" Width="50" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="txtRobots" Text="Robots" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </TabItem.Header>
