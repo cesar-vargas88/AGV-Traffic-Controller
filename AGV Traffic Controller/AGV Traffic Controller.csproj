@@ -137,6 +137,12 @@
     <Compile Include="User controls\ucMaps.xaml.cs">
       <DependentUpon>ucMaps.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User controls\ucRobots.xaml.cs">
+      <DependentUpon>ucRobots.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\ucRoutes.xaml.cs">
+      <DependentUpon>ucRoutes.xaml</DependentUpon>
+    </Compile>
     <Page Include="CloseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +182,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User controls\ucMaps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User controls\ucRobots.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User controls\ucRoutes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

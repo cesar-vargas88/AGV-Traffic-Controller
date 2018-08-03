@@ -172,3 +172,7 @@ C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controlle
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\CloseWindow.baml
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\SaveWindow.g.cs
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\SaveWindow.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\User controls\ucRobots.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\User controls\ucRobots.baml
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\User controls\ucRoutes.g.cs
+C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\obj\Debug\User controls\ucRoutes.baml

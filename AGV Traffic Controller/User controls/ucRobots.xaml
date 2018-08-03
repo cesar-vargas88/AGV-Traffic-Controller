@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="AGV_Traffic_Controller.User_controls.ucRobots"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AGV_Traffic_Controller"
+             mc:Ignorable="d">
+    <Grid Background="{x:Null}">
+        <Grid Margin="0, 0,0, 0" Width="300" Background="White" HorizontalAlignment="Left">
+
+            <Border BorderBrush="LightGray" BorderThickness="1" Margin="0,0,0,0"/>
+
+            <Border Background="SteelBlue" BorderBrush="SteelBlue" BorderThickness="1" Margin="0,0,0,0" Width="299" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="lblRobotsName" Content="" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="300" FontFamily="Calibri" FontSize="16"/>
+            <Button x:Name="btnCreateRobots"  Content="Agregar"         Foreground="White" Background="Gray" BorderBrush="White"    Margin="5,35,0,-6.4" Width="70" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+            <Button x:Name="btnDeleteRobots"    Content="Eliminar"        Foreground="White" Background="Gray" BorderBrush="White"    Margin="75,35,0,-6.4" Width="70" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri"/>
+
+            <Label x:Name="lblRobots" Content="Robots" Margin="0,70,0,0" Foreground="SteelBlue" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lboxRobots" Margin="5,95,5,5"      Width="290" Background="LightGray" Foreground="SteelBlue" BorderBrush="White" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
+
+        </Grid>
+        <Grid Margin="302, 0, 0, 0" Background="White" >
+            
+        </Grid>
+    </Grid>
+</UserControl>

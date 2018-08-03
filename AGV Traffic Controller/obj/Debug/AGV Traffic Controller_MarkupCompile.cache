@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\gdlcesva\source\repos\Visual Studio Team Services\AGV Traffic Controller\AGV Traffic Controller\App.xaml
-8220706994
+102037330518
 
-15-1907096538
+17780374750
 89-376025271
-CloseWindow.xaml;CreateMapWindow.xaml;AddEdgeWindow.xaml;AddNodeWindow.xaml;LoadMapWindow.xaml;MainWindow.xaml;SaveWindow.xaml;User controls\ucMaps.xaml;
+CloseWindow.xaml;CreateMapWindow.xaml;AddEdgeWindow.xaml;AddNodeWindow.xaml;LoadMapWindow.xaml;MainWindow.xaml;SaveWindow.xaml;User controls\ucMaps.xaml;User controls\ucRobots.xaml;User controls\ucRoutes.xaml;
 
 False
 
